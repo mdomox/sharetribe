@@ -41,7 +41,7 @@ class TransactionMailer < ActionMailer::Base
         mail_params(
           @recipient,
           @community,
-          t("emails.transaction_preauthorized.subject", requester: transaction.starter.name(@community), listing_title: transaction.listing.title))) do |format|
+          t("emails.transaction_preauthorized.subject", requester: PersonViewUtils.person_display_name(transaction.starter, @community), listing_title: transaction.listing.title))) do |format|
         format.html {
           render locals: {
                    payment_expires_in_unit: expires_in[:unit],
